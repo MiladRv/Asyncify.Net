@@ -1,4 +1,4 @@
-﻿namespace Green.CT.Asyncify.Contracts;
+﻿namespace Green.CT.Asyncify.Net.Contracts;
 
 public class AsyncRequestAttribute(string methodName) : Attribute
 {

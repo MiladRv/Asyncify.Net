@@ -1,10 +1,10 @@
 ﻿using System.Collections.Concurrent;
 using System.Reflection;
-using Green.CT.Asyncify.Contracts.Handlers;
-using Green.CT.Asyncify.Contracts.Requests;
-using Green.CT.Asyncify.Extensions;
+using Green.CT.Asyncify.Net.Contracts.Handlers;
+using Green.CT.Asyncify.Net.Contracts.Requests;
+using Green.CT.Asyncify.Net.Extensions;
 
-namespace Green.CT.Asyncify.Contracts.Managers;
+namespace Green.CT.Asyncify.Net.Contracts.Managers;
 
 public class AsyncRequestManager : IAsyncRequestManager
 {

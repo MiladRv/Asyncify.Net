@@ -1,4 +1,4 @@
-﻿namespace Green.CT.Asyncify.Contracts;
+﻿namespace Green.CT.Asyncify.Net.Contracts;
 
 [AttributeUsage(AttributeTargets.Class)]
 public class AsyncControllerAttribute(Type? type) : Attribute

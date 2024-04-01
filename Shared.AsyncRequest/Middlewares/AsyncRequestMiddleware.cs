@@ -1,8 +1,8 @@
-﻿using Green.CT.Asyncify.Contracts.Managers;
-using Green.CT.Asyncify.Extensions;
+﻿using Green.CT.Asyncify.Net.Contracts.Managers;
+using Green.CT.Asyncify.Net.Extensions;
 using Microsoft.AspNetCore.Http;
 
-namespace Green.CT.Asyncify.Middlewares;
+namespace Green.CT.Asyncify.Net.Middlewares;
 
 public class AsyncRequestMiddleware
 {

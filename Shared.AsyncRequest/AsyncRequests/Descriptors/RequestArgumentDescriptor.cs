@@ -1,11 +1,11 @@
 ﻿using System.Reflection;
-using Green.CT.Asyncify.Contracts;
-using Green.CT.Asyncify.Extensions;
+using Green.CT.Asyncify.Net.Contracts;
+using Green.CT.Asyncify.Net.Extensions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
 
-namespace Green.CT.Asyncify.AsyncRequests.Descriptors;
+namespace Green.CT.Asyncify.Net.AsyncRequests.Descriptors;
 
 internal abstract class RequestArgumentDescriptor : IRequestArgumentDescriptor
 {

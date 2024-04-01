@@ -1,8 +1,8 @@
 ﻿using System.Reflection;
-using Green.CT.Asyncify.Contracts;
+using Green.CT.Asyncify.Net.Contracts;
 using Microsoft.AspNetCore.Http;
 
-namespace Green.CT.Asyncify.Extensions;
+namespace Green.CT.Asyncify.Net.Extensions;
 
 public static class HttpContextExtensions
 {

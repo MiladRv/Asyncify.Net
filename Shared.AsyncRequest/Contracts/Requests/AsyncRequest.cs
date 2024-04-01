@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace Green.CT.Asyncify.Contracts.Requests;
+namespace Green.CT.Asyncify.Net.Contracts.Requests;
 
 internal class AsyncRequest(
     MethodInfo method,

@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
-using Green.CT.Asyncify.Contracts.Requests;
+using Green.CT.Asyncify.Net.Contracts.Requests;
 
-namespace Green.CT.Asyncify.Contracts.Managers;
+namespace Green.CT.Asyncify.Net.Contracts.Managers;
 
 public interface IAsyncRequestManager
 {

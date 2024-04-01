@@ -1,4 +1,4 @@
-﻿namespace Green.CT.Asyncify.Contracts.Requests;
+﻿namespace Green.CT.Asyncify.Net.Contracts.Requests;
 
 public enum AsyncRequestStatus
 {

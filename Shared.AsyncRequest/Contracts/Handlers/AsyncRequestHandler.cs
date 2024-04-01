@@ -1,6 +1,6 @@
-﻿using Green.CT.Asyncify.Contracts.Requests;
+﻿using Green.CT.Asyncify.Net.Contracts.Requests;
 
-namespace Green.CT.Asyncify.Contracts.Handlers;
+namespace Green.CT.Asyncify.Net.Contracts.Handlers;
 
 internal sealed class AsyncRequestHandler(IAsyncRequest asyncRequest)
     : IAsyncRequestHandler

@@ -1,8 +1,8 @@
-﻿using Green.CT.Asyncify.Extensions;
+﻿using Green.CT.Asyncify.Net.Extensions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Green.CT.Asyncify.AsyncRequests.Descriptors;
+namespace Green.CT.Asyncify.Net.AsyncRequests.Descriptors;
 
 internal sealed class GetRequestArgumentDescriptor(HttpRequest httpRequest)
     : RequestArgumentDescriptor(httpRequest)

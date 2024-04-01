@@ -1,16 +1,16 @@
-﻿using Green.CT.Asyncify.Contracts;
-using Green.CT.Asyncify.Contracts.Managers;
-using Green.CT.Asyncify.Middlewares;
+﻿using Green.CT.Asyncify.Net.Contracts;
+using Green.CT.Asyncify.Net.Contracts.Managers;
+using Green.CT.Asyncify.Net.Middlewares;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 
-namespace Green.CT.Asyncify.Extensions;
+namespace Green.CT.Asyncify.Net.Extensions;
 
 public static class ServiceRegistration
 {
-    internal static void AddAsyncResponse(this WebApplication app)
+    private static void AddAsyncResponse(this WebApplication app)
     {
         var asyncRequestManager = app.Services.GetRequiredService<IAsyncRequestManager>();
 
@@ -48,7 +48,7 @@ public static class ServiceRegistration
         return app;
     }
 
-    public static void AsyncRequest(IApplicationBuilder app)
+    private static void AsyncRequest(IApplicationBuilder app)
     {
         app.UseMiddleware<AsyncRequestMiddleware>();
     }

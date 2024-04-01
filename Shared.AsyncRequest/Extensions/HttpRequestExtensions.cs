@@ -1,7 +1,7 @@
-﻿using Green.CT.Asyncify.AsyncRequests.Descriptors;
+﻿using Green.CT.Asyncify.Net.AsyncRequests.Descriptors;
 using Microsoft.AspNetCore.Http;
 
-namespace Green.CT.Asyncify.Extensions;
+namespace Green.CT.Asyncify.Net.Extensions;
 
 public static class HttpRequestExtensions
 {

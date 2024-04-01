@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
-namespace Green.CT.Asyncify.AsyncRequests.Descriptors;
+namespace Green.CT.Asyncify.Net.AsyncRequests.Descriptors;
 
 internal abstract class BodyBasedRequestArgumentDescriptor(
     HttpRequest httpRequest) : RequestArgumentDescriptor(httpRequest)

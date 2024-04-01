@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace Green.CT.Asyncify.Extensions;
+namespace Green.CT.Asyncify.Net.Extensions;
 
 public static class ConverterExtensions
 {

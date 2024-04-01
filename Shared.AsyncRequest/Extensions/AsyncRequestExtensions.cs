@@ -1,7 +1,7 @@
-﻿using Green.CT.Asyncify.Contracts.Handlers;
-using Green.CT.Asyncify.Contracts.Requests;
+﻿using Green.CT.Asyncify.Net.Contracts.Handlers;
+using Green.CT.Asyncify.Net.Contracts.Requests;
 
-namespace Green.CT.Asyncify.Extensions;
+namespace Green.CT.Asyncify.Net.Extensions;
 
 internal static class AsyncRequestExtensions
 {

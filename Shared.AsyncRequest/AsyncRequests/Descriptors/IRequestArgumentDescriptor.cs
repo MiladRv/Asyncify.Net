@@ -1,4 +1,4 @@
-﻿namespace Green.CT.Asyncify.AsyncRequests.Descriptors;
+﻿namespace Green.CT.Asyncify.Net.AsyncRequests.Descriptors;
 
 public interface IRequestArgumentDescriptor
 {

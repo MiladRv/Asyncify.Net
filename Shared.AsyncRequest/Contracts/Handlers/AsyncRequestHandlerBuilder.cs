@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace Green.CT.Asyncify.Contracts.Handlers;
+namespace Green.CT.Asyncify.Net.Contracts.Handlers;
 
 internal class AsyncRequestHandlerBuilder
 {
