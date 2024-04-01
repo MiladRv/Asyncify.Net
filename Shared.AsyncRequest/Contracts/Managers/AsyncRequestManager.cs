@@ -8,13 +8,8 @@ namespace Green.CT.Asyncify.Contracts.Managers;
 
 public class AsyncRequestManager : IAsyncRequestManager
 {
-    private readonly ConcurrentDictionary<Guid, IAsyncRequestHandler> _requests;
+    private readonly ConcurrentDictionary<Guid, IAsyncRequestHandler> _requests = new();
 
-    public AsyncRequestManager()
-    {
-        _requests = new ConcurrentDictionary<Guid, IAsyncRequestHandler>();
-    }
-        
     public Guid RegisterRequest(MethodInfo method, object constructor, object[] arguments)
     {
         var asyncRequestHandler = new AsyncRequestHandlerBuilder()

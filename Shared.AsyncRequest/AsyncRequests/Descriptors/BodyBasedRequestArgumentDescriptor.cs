@@ -5,13 +5,9 @@ using Newtonsoft.Json;
 
 namespace Green.CT.Asyncify.AsyncRequests.Descriptors;
 
-internal abstract class BodyBasedRequestArgumentDescriptor : RequestArgumentDescriptor
+internal abstract class BodyBasedRequestArgumentDescriptor(
+    HttpRequest httpRequest) : RequestArgumentDescriptor(httpRequest)
 {
-    protected BodyBasedRequestArgumentDescriptor(HttpRequest httpRequest)
-        : base(httpRequest)
-    {
-    }
-
     protected override void FillArguments()
     {
         var bodyArguments = GetInputArguments(typeof(FromBodyAttribute));

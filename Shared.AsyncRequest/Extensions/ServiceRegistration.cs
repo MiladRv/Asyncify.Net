@@ -10,7 +10,7 @@ namespace Green.CT.Asyncify.Extensions;
 
 public static class ServiceRegistration
 {
-    internal static IApplicationBuilder AddAsyncResponse(this WebApplication app)
+    internal static void AddAsyncResponse(this WebApplication app)
     {
         var asyncRequestManager = app.Services.GetRequiredService<IAsyncRequestManager>();
 
@@ -34,8 +34,6 @@ public static class ServiceRegistration
             .WithName("async")
             .WithDescription("Some Method Description")
             .WithOpenApi();
-
-        return app;
     }
 
     public static IApplicationBuilder UseAsyncRequest(this WebApplication app)

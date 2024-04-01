@@ -1,12 +1,6 @@
 ﻿namespace Green.CT.Asyncify.Contracts;
 
-public class AsyncRequestAttribute : Attribute
+public class AsyncRequestAttribute(string methodName) : Attribute
 {
-    private readonly string _method;
-    public AsyncRequestAttribute(string methodName)
-    {
-        _method = methodName;
-    }
-
-    public string GetMethodName() => _method;
+    public string GetMethodName() => methodName;
 }

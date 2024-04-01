@@ -2,11 +2,5 @@
 
 namespace Green.CT.Asyncify.AsyncRequests.Descriptors;
 
-internal class PostRequestArgumentDescriptor : BodyBasedRequestArgumentDescriptor
-{
-    public PostRequestArgumentDescriptor(HttpRequest httpRequest)
-        : base(httpRequest)
-    {
-    }
-
-}
+internal class PostRequestArgumentDescriptor(HttpRequest httpRequest)
+    : BodyBasedRequestArgumentDescriptor(httpRequest);

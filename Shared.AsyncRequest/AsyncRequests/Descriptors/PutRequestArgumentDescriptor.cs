@@ -2,11 +2,5 @@
 
 namespace Green.CT.Asyncify.AsyncRequests.Descriptors;
 
-internal sealed class PutRequestArgumentDescriptor : BodyBasedRequestArgumentDescriptor
-{
-    public PutRequestArgumentDescriptor(HttpRequest httpRequest)
-        : base(httpRequest)
-    {
-    }
-   
-}
+internal sealed class PutRequestArgumentDescriptor(HttpRequest httpRequest)
+    : BodyBasedRequestArgumentDescriptor(httpRequest);

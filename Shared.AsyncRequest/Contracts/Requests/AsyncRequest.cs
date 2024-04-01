@@ -2,14 +2,14 @@
 
 namespace Green.CT.Asyncify.Contracts.Requests;
 
-internal class AsyncRequest : IAsyncRequest
+internal class AsyncRequest(
+    MethodInfo method,
+    object constructor,
+    object[] arguments)
+    : IAsyncRequest
 {
-    private readonly MethodInfo _method;
-    private readonly object _constructor;
-    private readonly object[] _arguments;
-
-    public Guid Id { get; init; }
-    public DateTime CreationDate { get; init; }
+    public Guid Id { get; init; } = Guid.NewGuid();
+    public DateTime CreationDate { get; init; } = DateTime.UtcNow;
     public AsyncRequestStatus Status { get; private set; } = AsyncRequestStatus.Pending;
     private object? Result { get; set; }
 
@@ -23,23 +23,11 @@ internal class AsyncRequest : IAsyncRequest
 
     public AsyncRequestStatus GetStatus() => Status;
 
-    public AsyncRequest(MethodInfo method,
-        object constructor,
-        object[] arguments)
-    {
-        _method = method;
-        _constructor = constructor;
-        _arguments = arguments;
-
-        Id = Guid.NewGuid();
-        CreationDate = DateTime.UtcNow;
-    }
-
     public void Invoke(CancellationToken cancellationToken)
     {
         try
         {
-            Result = _method.Invoke(_constructor, _arguments);
+            Result = method.Invoke(constructor, arguments);
         }
         catch (TimeoutException)
         {

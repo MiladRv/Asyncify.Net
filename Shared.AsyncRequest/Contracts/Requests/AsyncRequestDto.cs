@@ -1,16 +1,11 @@
 ﻿namespace Green.CT.Asyncify.Contracts.Requests;
 
-public class AsyncRequestDto
+public class AsyncRequestDto(
+    Guid trackId,
+    AsyncRequestStatus status,
+    object? result)
 {
-    public AsyncRequestDto(Guid trackId,
-        AsyncRequestStatus status,
-        object? result)
-    {
-        TrackId = trackId;
-        Status = status;
-        Result = result;
-    }
-    public Guid TrackId { get; }
-    public AsyncRequestStatus Status { get; }
-    public object? Result { get; }
+    public Guid TrackId { get; } = trackId;
+    public AsyncRequestStatus Status { get; } = status;
+    public object? Result { get; } = result;
 }

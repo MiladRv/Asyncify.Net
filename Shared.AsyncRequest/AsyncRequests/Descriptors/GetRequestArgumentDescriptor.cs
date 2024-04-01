@@ -4,14 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Green.CT.Asyncify.AsyncRequests.Descriptors;
 
-internal sealed class GetRequestArgumentDescriptor : RequestArgumentDescriptor
+internal sealed class GetRequestArgumentDescriptor(HttpRequest httpRequest)
+    : RequestArgumentDescriptor(httpRequest)
 {
-
-    public GetRequestArgumentDescriptor(HttpRequest httpRequest)
-        : base(httpRequest)
-    {
-    }
-
     protected override void FillArguments() 
     {
         var parameters = GetInputArguments(typeof(FromQueryAttribute));

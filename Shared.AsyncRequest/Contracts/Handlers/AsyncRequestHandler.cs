@@ -2,24 +2,18 @@
 
 namespace Green.CT.Asyncify.Contracts.Handlers;
 
-internal sealed class AsyncRequestHandler : IAsyncRequestHandler
+internal sealed class AsyncRequestHandler(IAsyncRequest asyncRequest)
+    : IAsyncRequestHandler
 {
-    private readonly IAsyncRequest _request;
-
-    public AsyncRequestHandler(IAsyncRequest asyncRequest)
-    {
-        _request = asyncRequest;
-    }
-
     public void Handle(CancellationToken cancellationToken)
     {
         Task.Run(() =>
         {
-            _request.Invoke(cancellationToken);
+            asyncRequest.Invoke(cancellationToken);
         }, cancellationToken);
     }
 
-    public AsyncRequestStatus GetStatus() => _request.GetStatus();
-    public object? GetResult() => _request.GetResult();
-    public Guid Id => _request.Id;
+    public AsyncRequestStatus GetStatus() => asyncRequest.GetStatus();
+    public object? GetResult() => asyncRequest.GetResult();
+    public Guid Id => asyncRequest.Id;
 }
