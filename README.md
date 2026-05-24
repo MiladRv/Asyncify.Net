@@ -1,8 +1,9 @@
 # Asyncify.Net
 
-[![NuGet](https://img.shields.io/nuget/v/Asyncify.Net.svg)](https://www.nuget.org/packages/Asyncify.Net)
-[![Build](https://github.com/green-ct/Asyncify.Net/actions/workflows/test-pipeline.yml/badge.svg)](https://github.com/green-ct/Asyncify.Net/actions/workflows/test-pipeline.yml)
+[![NuGet](https://img.shields.io/nuget/v/MiladRv.Asyncify.Net.svg)](https://www.nuget.org/packages/MiladRv.Asyncify.Net)
+[![Build](https://github.com/MiladRv/Asyncify.Net/actions/workflows/publish-nuget.yml/badge.svg)](https://github.com/MiladRv/Asyncify.Net/actions/workflows/publish-nuget.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+![.NET](https://img.shields.io/badge/.NET-8%20%7C%2010-512BD4)
 
 Run your heavy synchronous controller actions in the background — without changing a single line of business logic. Just add an attribute, and your endpoint immediately returns a `trackId` that the client can use to poll for the result.
 
@@ -16,7 +17,7 @@ GET  /async?trackId=… →  { "status": "Complete", "result": { … } }
 
 ## Requirements
 
-- .NET 8
+- .NET 8 or .NET 10
 
 ---
 
