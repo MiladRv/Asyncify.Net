@@ -7,13 +7,24 @@
 		<AssemblyName>Green.CT.$(MSBuildProjectName)</AssemblyName>
 		<RootNamespace>Green.CT.$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
 		<TargetFramework>net8.0</TargetFramework>
-		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+
+		<!-- Package identity -->
+		<PackageId>Asyncify.Net</PackageId>
 		<Title>Asyncify.Net</Title>
-		<Authors>Green.CT</Authors>
-		<Description>This projects helps to handle rest-requests asyncronize.</Description>
-		<RepositoryUrl>https://github.com/green-ct/Asyncify.Net</RepositoryUrl>
-		<PackageTags>1.0.0</PackageTags>
+		<Authors>MiladRv</Authors>
+		<Description>Run heavy synchronous ASP.NET Core controller actions in the background without changing your business logic. Add an attribute, get a trackId instantly, and poll for the result.</Description>
+		<PackageTags>aspnetcore;async;background;middleware;polling;fire-and-forget;dotnet</PackageTags>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageProjectUrl>https://github.com/MiladRv/Asyncify.Net</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/MiladRv/Asyncify.Net</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
 	</PropertyGroup>
+
+	<ItemGroup>
+		<!-- README رو داخل package قرار میده تا توی nuget.org نمایش داده بشه -->
+		<None Include="..\README.md" Pack="true" PackagePath="\" />
+	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.AspNetCore.App" Version="2.2.8" />
