@@ -9,6 +9,7 @@ internal static class AsyncRequestExtensions
     {
         return new AsyncRequestDto(trackId: asyncRequest.Id,
             status: asyncRequest.GetStatus(),
-            result: asyncRequest.GetResult());
+            result: asyncRequest.GetResult(),
+            createdAt: asyncRequest.CreationDate);
     }
 }
