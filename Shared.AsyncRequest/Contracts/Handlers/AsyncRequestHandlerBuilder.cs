@@ -36,6 +36,18 @@ internal class AsyncRequestHandlerBuilder
 
     public IAsyncRequestHandler Build()
     {
+        if (_method is null)
+            throw new InvalidOperationException($"{nameof(WithMethod)} must be called before Build().");
+
+        if (_constructor is null)
+            throw new InvalidOperationException($"{nameof(WithConstructor)} must be called before Build().");
+
+        if (_arguments is null)
+            throw new InvalidOperationException($"{nameof(WithArguments)} must be called before Build().");
+
+        if (_scope is null)
+            throw new InvalidOperationException($"{nameof(WithScope)} must be called before Build().");
+
         var asyncRequest = new Requests.AsyncRequest(_method,
             _constructor,
             _arguments,
