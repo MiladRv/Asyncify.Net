@@ -56,7 +56,7 @@ internal abstract class RequestArgumentDescriptor : IRequestArgumentDescriptor
             throw new ArgumentNullException($"{nameof(AsyncControllerAttribute)} not found");
 
         Controller = attribute
-            .GetType()!;
+            .GetControllerType()!;
 
     }
     private void GetRouteArguments()
