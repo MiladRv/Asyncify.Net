@@ -10,6 +10,12 @@ namespace Green.CT.Asyncify.Net.Extensions;
 
 public static class ServiceRegistration
 {
+    public static IServiceCollection AddAsyncRequest(this IServiceCollection services)
+    {
+        services.AddSingleton<IAsyncRequestManager, AsyncRequestManager>();
+        return services;
+    }
+
     private static void AddAsyncResponse(this WebApplication app)
     {
         var asyncRequestManager = app.Services.GetRequiredService<IAsyncRequestManager>();
