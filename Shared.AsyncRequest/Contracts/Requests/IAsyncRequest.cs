@@ -6,4 +6,5 @@ public interface IAsyncRequest
     object? GetResult();
     AsyncRequestStatus GetStatus();
     Guid Id { get; }
+    DateTime CreationDate { get; }
 }

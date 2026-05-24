@@ -13,4 +13,5 @@ internal sealed class AsyncRequestHandler(IAsyncRequest asyncRequest)
     public AsyncRequestStatus GetStatus() => asyncRequest.GetStatus();
     public object? GetResult() => asyncRequest.GetResult();
     public Guid Id => asyncRequest.Id;
+    public DateTime CreationDate => asyncRequest.CreationDate;
 }
