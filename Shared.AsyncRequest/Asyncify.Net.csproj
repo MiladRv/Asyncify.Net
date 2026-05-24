@@ -9,8 +9,8 @@
 		<TargetFramework>net8.0</TargetFramework>
 
 		<!-- Package identity -->
-		<PackageId>Asyncify.Net</PackageId>
-		<Title>Asyncify.Net</Title>
+		<PackageId>MiladRv.Asyncify.Net</PackageId>
+		<Title>MiladRv.Asyncify.Net</Title>
 		<Authors>MiladRv</Authors>
 		<Description>Run heavy synchronous ASP.NET Core controller actions in the background without changing your business logic. Add an attribute, get a trackId instantly, and poll for the result.</Description>
 		<PackageTags>aspnetcore;async;background;middleware;polling;fire-and-forget;dotnet</PackageTags>
