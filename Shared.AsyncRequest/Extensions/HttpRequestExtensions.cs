@@ -33,7 +33,7 @@ public static class HttpRequestExtensions
             "get" => HttpMethod.Get,
             "post" => HttpMethod.Post,
             "put" => HttpMethod.Put,
-            "delete" => HttpMethod.Get,
+            "delete" => HttpMethod.Delete,
             _ => throw new ArgumentException()
         };
     }
