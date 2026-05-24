@@ -1,11 +1,13 @@
 ﻿using System.Reflection;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Green.CT.Asyncify.Net.Contracts.Requests;
 
 internal class AsyncRequest(
     MethodInfo method,
     object constructor,
-    object[] arguments)
+    object[] arguments,
+    IServiceScope scope)
     : IAsyncRequest
 {
     public Guid Id { get; init; } = Guid.NewGuid();
@@ -47,6 +49,11 @@ internal class AsyncRequest(
         catch (Exception)
         {
             _status = (int)AsyncRequestStatus.Failed;
+        }
+        finally
+        {
+            // scope رو dispose میکنیم تا scoped services مثل DbContext آزاد بشن
+            scope.Dispose();
         }
     }
 

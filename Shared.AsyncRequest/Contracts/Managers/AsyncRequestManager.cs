@@ -3,6 +3,7 @@ using System.Reflection;
 using Green.CT.Asyncify.Net.Contracts.Handlers;
 using Green.CT.Asyncify.Net.Contracts.Requests;
 using Green.CT.Asyncify.Net.Extensions;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Green.CT.Asyncify.Net.Contracts.Managers;
 
@@ -18,12 +19,13 @@ public class AsyncRequestManager : IAsyncRequestManager, IDisposable
         _cleanupTimer = new Timer(CleanupExpiredRequests, null, CleanupInterval, CleanupInterval);
     }
 
-    public Guid RegisterRequest(MethodInfo method, object constructor, object[] arguments)
+    public Guid RegisterRequest(MethodInfo method, object constructor, object[] arguments, IServiceScope scope)
     {
         var asyncRequestHandler = new AsyncRequestHandlerBuilder()
             .WithMethod(method)
             .WithConstructor(constructor)
             .WithArguments(arguments)
+            .WithScope(scope)
             .Build();
 
         _requests.TryAdd(asyncRequestHandler.Id, (asyncRequestHandler, DateTime.UtcNow));
