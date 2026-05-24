@@ -12,6 +12,7 @@ public class AsyncRequestManager : IAsyncRequestManager, IDisposable
     private readonly ConcurrentDictionary<Guid, (IAsyncRequestHandler Handler, DateTime RegisteredAt)> _requests = new();
     private readonly Timer _cleanupTimer;
     private static readonly TimeSpan ResultTtl = TimeSpan.FromMinutes(30);
+    private static readonly TimeSpan PendingTtl = TimeSpan.FromHours(1);
     private static readonly TimeSpan CleanupInterval = TimeSpan.FromMinutes(5);
 
     public AsyncRequestManager()
@@ -55,12 +56,22 @@ public class AsyncRequestManager : IAsyncRequestManager, IDisposable
         var expiredKeys = _requests
             .Where(kvp =>
             {
-                var isFinished = kvp.Value.Handler.GetStatus() is
+                var status = kvp.Value.Handler.GetStatus();
+                var age = DateTime.UtcNow - kvp.Value.RegisteredAt;
+
+                // requestهایی که تموم شدن و بیشتر از ResultTtl گذشته
+                var isFinishedAndExpired = status is
                     AsyncRequestStatus.Complete or
                     AsyncRequestStatus.Failed or
-                    AsyncRequestStatus.Timeout;
-                var isExpired = DateTime.UtcNow - kvp.Value.RegisteredAt > ResultTtl;
-                return isFinished && isExpired;
+                    AsyncRequestStatus.Timeout
+                    && age > ResultTtl;
+
+                // requestهایی که در loop بی‌نهایت یا deadlock گیر کردن
+                // و بیشتر از PendingTtl هنوز Pending موندن
+                var isStuckPending = status == AsyncRequestStatus.Pending
+                    && age > PendingTtl;
+
+                return isFinishedAndExpired || isStuckPending;
             })
             .Select(kvp => kvp.Key)
             .ToList();
