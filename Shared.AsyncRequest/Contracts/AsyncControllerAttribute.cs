@@ -3,5 +3,5 @@
 [AttributeUsage(AttributeTargets.Class)]
 public class AsyncControllerAttribute(Type? type) : Attribute
 {
-    public new Type? GetType() => type;
+    public Type? GetControllerType() => type;
 }

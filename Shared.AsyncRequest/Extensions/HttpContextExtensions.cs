@@ -18,7 +18,7 @@ public static class HttpContextExtensions
         if (attribute == null)
             throw new ArgumentNullException($"{nameof(AsyncControllerAttribute)} not found");
 
-        return attribute.GetType()!;
+        return attribute.GetControllerType()!;
     }
 
     public static MethodInfo GetAsyncMethodInfo(this HttpContext httpContext, Type asyncController)
