@@ -10,15 +10,20 @@ internal class AsyncRequest(
 {
     public Guid Id { get; init; } = Guid.NewGuid();
     public DateTime CreationDate { get; init; } = DateTime.UtcNow;
-    public AsyncRequestStatus Status { get; private set; } = AsyncRequestStatus.Pending;
-    private object? Result { get; set; }
+
+    // volatile تضمین میکنه که هر thread مقدار واقعی رو از حافظه بخونه،
+    // نه یه نسخه cache‌شده که ممکنه stale باشه
+    private volatile int _status = (int)AsyncRequestStatus.Pending;
+    private volatile object? _result;
     private Task? _executionTask;
+
+    public AsyncRequestStatus Status => (AsyncRequestStatus)_status;
 
     public object? GetResult()
     {
         return Status != AsyncRequestStatus.Complete
             ? null
-            : Result;
+            : _result;
     }
 
     public AsyncRequestStatus GetStatus() => Status;
@@ -32,16 +37,16 @@ internal class AsyncRequest(
     {
         try
         {
-            Result = method.Invoke(constructor, arguments);
-            Status = AsyncRequestStatus.Complete;
+            _result = method.Invoke(constructor, arguments);
+            _status = (int)AsyncRequestStatus.Complete;
         }
         catch (TimeoutException)
         {
-            Status = AsyncRequestStatus.Timeout;
+            _status = (int)AsyncRequestStatus.Timeout;
         }
         catch (Exception)
         {
-            Status = AsyncRequestStatus.Failed;
+            _status = (int)AsyncRequestStatus.Failed;
         }
     }
 
