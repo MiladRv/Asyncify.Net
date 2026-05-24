@@ -12,12 +12,12 @@ internal class AsyncRequest(
     public DateTime CreationDate { get; init; } = DateTime.UtcNow;
     public AsyncRequestStatus Status { get; private set; } = AsyncRequestStatus.Pending;
     private object? Result { get; set; }
+    private Task? _executionTask;
 
-    //TODO:  throw exception when task not completed? 
     public object? GetResult()
     {
-        return Status != AsyncRequestStatus.Complete 
-            ? null 
+        return Status != AsyncRequestStatus.Complete
+            ? null
             : Result;
     }
 
@@ -25,9 +25,15 @@ internal class AsyncRequest(
 
     public void Invoke(CancellationToken cancellationToken)
     {
+        _executionTask = Task.Run(() => ExecuteInternal(cancellationToken), cancellationToken);
+    }
+
+    private void ExecuteInternal(CancellationToken cancellationToken)
+    {
         try
         {
             Result = method.Invoke(constructor, arguments);
+            Status = AsyncRequestStatus.Complete;
         }
         catch (TimeoutException)
         {
@@ -37,8 +43,6 @@ internal class AsyncRequest(
         {
             Status = AsyncRequestStatus.Failed;
         }
-
-        Status = AsyncRequestStatus.Complete;
     }
 
 

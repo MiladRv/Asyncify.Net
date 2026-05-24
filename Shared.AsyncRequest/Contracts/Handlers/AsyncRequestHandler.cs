@@ -7,10 +7,7 @@ internal sealed class AsyncRequestHandler(IAsyncRequest asyncRequest)
 {
     public void Handle(CancellationToken cancellationToken)
     {
-        Task.Run(() =>
-        {
-            asyncRequest.Invoke(cancellationToken);
-        }, cancellationToken);
+        asyncRequest.Invoke(cancellationToken);
     }
 
     public AsyncRequestStatus GetStatus() => asyncRequest.GetStatus();
