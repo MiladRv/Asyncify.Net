@@ -6,7 +6,7 @@
 		<LangVersion>12</LangVersion>
 		<AssemblyName>Green.CT.$(MSBuildProjectName)</AssemblyName>
 		<RootNamespace>Green.CT.$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
-		<TargetFramework>net8.0</TargetFramework>
+		<TargetFrameworks>net8.0;net10.0</TargetFrameworks>
 
 		<!-- Package identity -->
 		<PackageId>MiladRv.Asyncify.Net</PackageId>
@@ -27,12 +27,24 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.AspNetCore.App" Version="2.2.8" />
-		<PackageReference Include="Microsoft.AspNetCore.Routing" Version="2.2.2" />
-		<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.3" />
-		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
-		<PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.5.0" />
+		<!-- Microsoft.AspNetCore.App و Routing به عنوان PackageReference منسوخ شدن از .NET 3+
+		     برای library ها باید از FrameworkReference استفاده بشه -->
+		<FrameworkReference Include="Microsoft.AspNetCore.App" />
+	</ItemGroup>
+
+	<!-- OpenApi نسخه متفاوتی برای هر framework داره -->
+	<ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
+		<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.19" />
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net10.0'">
+		<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.8" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="10.1.7" />
+		<PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="10.1.7" />
 	</ItemGroup>
 
 </Project>
